@@ -280,7 +280,7 @@ class Particle {
 
 const Particles = {
   list: [],
-  add(p) { this.list.push(p); },
+  add(p) { if (this.list.length >= 800) this.list.splice(0, 100); this.list.push(p); },
   update(dt) { this.list = this.list.filter(p => p.update(dt)); },
   draw(ctx) { this.list.forEach(p => p.draw(ctx)); },
   clear() { this.list = []; },
