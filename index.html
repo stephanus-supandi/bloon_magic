@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>BLOON: THE IMPOSSIBLE SHOW</title>
+<title>BLOONMAGIC — THE IMPOSSIBLE SHOW</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Georgia', serif; }
@@ -85,7 +85,7 @@ canvas { display: block; position: absolute; top: 0; left: 0; }
 <div id="transition-overlay"></div>
 <div id="ui-overlay">
   <div id="start-screen" class="menu-screen visible">
-    <div class="menu-title">BLOON</div>
+    <div class="menu-title">BLOONMAGIC</div>
     <div class="menu-subtitle">THE IMPOSSIBLE SHOW</div>
     <button class="menu-btn" onclick="Game.startGame()">MULAI PERTUNJUKAN</button>
     <button class="menu-btn" onclick="Game.showCredits()">TENTANG</button>
@@ -687,7 +687,7 @@ const Game = (() => {
   }
 
   function showCredits() {
-    alert('BLOON: THE IMPOSSIBLE SHOW\n\nSebuah pertunjukan ilusi digital.\nSemua karakter dan trik adalah fiksi.\nDibuat dengan HTML5 Canvas & Web Audio API.\n\nTidak ada magician asli yang dirugikan dalam pembuatan game ini.');
+    alert('BLOONMAGIC — THE IMPOSSIBLE SHOW\n\nSebuah pertunjukan ilusi digital.\nSemua karakter dan trik adalah fiksi.\nDibuat dengan HTML5 Canvas & Web Audio API.\n\nTidak ada magician asli yang dirugikan dalam pembuatan game ini.');
   }
 
   function showEnding() {
@@ -1092,7 +1092,7 @@ class MirrorAct {
     }
     // Wrong click
     //mystery = Game.getMystery() - 5;
-    mystery.addMystery(-5);
+    Game.addMystery(-5);
     Audio.playTone(150, 0.2, 'sawtooth', 0.05);
   }
 
