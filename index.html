@@ -562,14 +562,19 @@ const Game = (() => {
   }
 
   function startGame() {
-    Audio.init();
-    Audio.resume();
-    Audio.startDrone();
-    transition(() => {
-      state = 'menu';
-      showScreen('menu-screen');
-      buildActGrid();
-    });
+    // Audio is optional; browser autoplay/security policies must never block the game.
+    try {
+      Audio.init();
+      Audio.resume();
+      Audio.startDrone();
+    } catch (e) {
+      console.warn('BLOONMAGIC audio disabled:', e);
+    }
+
+    state = 'menu';
+    document.getElementById('hud').style.display = 'none';
+    showScreen('menu-screen');
+    buildActGrid();
   }
 
   function buildActGrid() {
@@ -794,6 +799,31 @@ const Game = (() => {
   function init() {
     const canvas = document.getElementById('gameCanvas');
     Renderer.init(canvas);
+
+    const startBtn = document.getElementById('start-game-btn');
+    const creditsBtn = document.getElementById('credits-btn');
+    let startLock = false;
+
+    const startOnce = (e) => {
+      e.preventDefault();
+      if (startLock) return;
+      startLock = true;
+      startGame();
+      setTimeout(() => { startLock = false; }, 400);
+    };
+
+    if (startBtn) {
+      startBtn.addEventListener('click', startOnce);
+      startBtn.addEventListener('pointerup', startOnce);
+    }
+
+    if (creditsBtn) {
+      creditsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showCredits();
+      });
+    }
+
     window.addEventListener('resize', () => Renderer.resize());
     window.addEventListener('keydown', e => { e.preventDefault(); handleKey(e.code); });
     canvas.addEventListener('click', e => handleClick(e.clientX, e.clientY));
