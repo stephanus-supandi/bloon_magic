@@ -140,6 +140,7 @@ canvas { display: block; position: absolute; top: 0; left: 0; }
 </div>
 <script>
 'use strict';
+window.addEventListener('error', function(e) { console.error('BLOONMAGIC runtime error:', e.error || e.message); });
 // ==================== AUDIO ENGINE ====================
 const Audio = (() => {
   let ctx = null;
@@ -503,6 +504,8 @@ const Game = (() => {
   let lastTime = 0;
   let audienceMsgTimer = 0;
   let transitionTimer = 0;
+  let dustTimer = 0;
+  let smokeTimer = 0;
 
   const actNames = [
     'IMPOSSIBLE CARD', 'BLACK MIRROR', 'VANISHING COIN',
