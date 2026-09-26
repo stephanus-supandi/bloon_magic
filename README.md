@@ -26,3 +26,7 @@ BLOONMAGIC is a fictional digital illusion show created for the BLOON project.
 
 > This is a browser game, not a real magic act.
 
+
+### Play BLOONMAGIC
+
+[▶ PLAY THE GAME](https://stephanus-supandi.github.io/bloon_magic/)
