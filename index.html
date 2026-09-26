@@ -806,6 +806,9 @@ const Game = (() => {
   return { init, startGame, showCredits, selectAct, pause, resume, restartAct, backToMenu, backToStart, nextAct, touchAction, actSuccess, actFailure, getState: () => state, getScore: () => score, getCombo: () => combo, setCombo: c => combo = c, addScore: s => score += s, addExcitement: e => excitement = Math.min(100, excitement + e), addMystery: m => mystery = Math.max(0, mystery + m), getMystery: () => mystery, getExcitement: () => excitement };
 })();
 
+// Expose the game API explicitly for HTML onclick handlers.
+window.Game = Game;
+
 // ==================== ACT 1: IMPOSSIBLE CARD ====================
 class CardAct {
   constructor() {
